@@ -1,21 +1,29 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AdminNavigation from "./_components/AdminNavigation";
+import "./admin.css";
 
 export const metadata: Metadata = {
-  title: "Content Admin",
+  title: "Workspace | ContentOps AI",
   robots: { index: false, follow: false },
 };
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
-      <header className="border-b border-gray-200 bg-white">
-        <nav aria-label="Admin navigation" className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-5">
-          <Link href="/admin" className="text-lg font-semibold">Content Admin</Link>
-          <Link href="/" className="text-sm text-gray-600 hover:underline">View website</Link>
-        </nav>
-      </header>
-      <main className="mx-auto max-w-5xl px-6 py-10">{children}</main>
+    <div className="admin-workspace">
+      <a href="#workspace-content" className="admin-skip">Skip to content</a>
+      <aside className="admin-sidebar">
+        <Link href="/" className="admin-brand"><span aria-hidden="true">✳</span> ContentOps <small>AI</small></Link>
+        <p className="admin-nav-label">EDITORIAL WORKSPACE</p>
+        <AdminNavigation />
+        <div className="admin-sidebar-note"><span aria-hidden="true">◇</span><strong>Your content. Your call.</strong><p>Explore your library and review AI suggestions, one article at a time.</p></div>
+        <Link href="/" className="admin-exit">View website <span aria-hidden="true">↗</span></Link>
+      </aside>
+      <div className="admin-body">
+        <header className="admin-topbar"><span>Workspace <span aria-hidden="true">/</span> Content operations</span><span className="admin-workspace-tag">Editorial tools</span></header>
+        <main id="workspace-content" className="admin-content">{children}</main>
+        <footer className="admin-footer">ContentOps AI <span>Thoughtful content starts here.</span></footer>
+      </div>
     </div>
   );
 }

@@ -55,60 +55,62 @@ export default function ContentLibraryChat() {
   }
 
   return (
-    <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+    <section id="library-assistant" className="admin-chat" aria-labelledby="assistant-heading">
       <div className="mb-5">
-        <p className="text-sm font-medium text-gray-500">
+        <p className="admin-eyebrow">
           AI Content Intelligence
         </p>
 
-        <h2 className="text-2xl font-bold text-gray-900">
-          Ask Your Content Library
+        <h2 id="assistant-heading">
+          A little content clarity.
         </h2>
 
-        <p className="mt-1 text-sm text-gray-600">
+        <p className="mt-1 text-sm text-[#b8afc5]">
           Ask questions across your published Sanity content.
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        <label htmlFor="library-question" className="sr-only">Ask your content library</label>
         <textarea
+          id="library-question"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           placeholder="What have we written about AI agents?"
           rows={4}
-          className="w-full rounded-xl border border-gray-300 p-4 text-sm outline-none transition focus:border-gray-500"
+          className="w-full rounded-xl border border-[#48404f] p-4 text-sm outline-none transition focus:border-[#c7b5ff]"
         />
 
         <button
           type="submit"
           disabled={loading || !question.trim()}
-          className="rounded-xl bg-black px-5 py-3 text-sm font-semibold text-white transition hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50"
+          className="rounded-xl bg-[#c7b5ff] px-5 py-3 text-sm font-semibold text-[#191323] transition hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {loading ? "Searching..." : "Ask Content Library"}
         </button>
       </form>
 
       {error && (
-        <div className="mt-5 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+        <div role="alert" className="mt-5 rounded-xl border border-[#713e4a] bg-[#301c24] p-4 text-sm text-[#ffb2bf]">
           {error}
         </div>
       )}
 
       {result && (
-        <div className="mt-6 space-y-6">
-          <div className="rounded-xl bg-gray-50 p-5">
-            <h3 className="font-semibold text-gray-900">
+        <div className="mt-6 space-y-6" aria-live="polite">
+          <div className="rounded-xl bg-[#111216] p-5">
+            <h3 className="font-semibold text-[#f1f0f5]">
               Answer
             </h3>
 
-            <p className="mt-3 whitespace-pre-line text-sm leading-7 text-gray-700">
+            <p className="mt-3 whitespace-pre-line text-sm leading-7 text-[#c9c1d4]">
               {result.answer}
             </p>
           </div>
 
           {result.sources?.length > 0 && (
             <div>
-              <h3 className="font-semibold text-gray-900">
+              <h3 className="font-semibold text-[#f1f0f5]">
                 Relevant Content
               </h3>
 
@@ -116,16 +118,16 @@ export default function ContentLibraryChat() {
                 {result.sources.map((source, index) => (
                   <div
                     key={`${source.slug}-${index}`}
-                    className="rounded-xl border border-gray-200 p-4"
+                    className="rounded-xl border border-[#2f2c37] p-4"
                   >
-                    <p className="font-medium text-gray-900">
+                    <p className="font-medium text-[#f1f0f5]">
                       {source.title || "Untitled"}
                     </p>
 
                     {source.slug && (
                       <a
                         href={`/admin/posts/${source.slug}`}
-                        className="mt-1 inline-block text-sm text-gray-600 hover:underline"
+                        className="mt-1 inline-block text-sm text-[#b8afc5] hover:underline"
                       >
                         Review post →
                       </a>

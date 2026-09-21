@@ -71,16 +71,16 @@ export default function AnalyzeContentButton({
   }
 
   return (
-    <section className="my-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+    <section className="my-8 rounded-2xl border border-[#2f2c37] bg-[#18191d] p-6 shadow-sm">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm font-medium text-gray-500">
+          <p className="text-sm font-medium text-[#aaa0b8]">
             AI Content Assistant
           </p>
-          <h2 className="text-2xl font-bold text-gray-900">
+          <h2 className="text-2xl font-medium text-[#f1f0f5]">
             Content Audit
           </h2>
-          <p className="mt-1 text-sm text-gray-600">
+          <p className="mt-1 text-sm text-[#b8afc5]">
             Review SEO, readability, structure, and content opportunities.
           </p>
         </div>
@@ -88,31 +88,31 @@ export default function AnalyzeContentButton({
         <button
           onClick={handleAnalyze}
           disabled={loading}
-          className="rounded-xl bg-black px-5 py-3 text-sm font-semibold text-white transition hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50"
+          className="rounded-xl bg-[#c7b5ff] px-5 py-3 text-sm font-semibold text-[#191323] transition hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {loading ? "Analyzing..." : "Analyze Content"}
         </button>
       </div>
 
       {error && (
-        <div role="alert" className="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+        <div role="alert" className="mt-6 rounded-xl border border-[#713e4a] bg-[#301c24] p-4 text-sm text-[#ffb2bf]">
           {error}
         </div>
       )}
 
       {result && (
         <div className="mt-8 space-y-6">
-          <div className="rounded-2xl bg-gray-50 p-6">
-            <p className="text-sm font-medium text-gray-500">
+          <div className="rounded-2xl bg-[#111216] p-6">
+            <p className="text-sm font-medium text-[#aaa0b8]">
               Overall Score
             </p>
 
             <div className="mt-2 flex items-end gap-2">
-              <span className="text-5xl font-bold text-gray-900">
+              <span className="text-5xl font-medium text-[#f1f0f5]">
                 {result.score}
               </span>
 
-              <span className="pb-1 text-lg text-gray-500">
+              <span className="pb-1 text-lg text-[#aaa0b8]">
                 / 100
               </span>
             </div>
@@ -147,7 +147,7 @@ export default function AnalyzeContentButton({
           />
           {result.recommendations?.length > 0 && (
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">
+              <h3 className="text-lg font-semibold text-[#f1f0f5]">
                 Recommendations
               </h3>
 
@@ -156,13 +156,13 @@ export default function AnalyzeContentButton({
                   (recommendation: string, index: number) => (
                     <div
                       key={index}
-                      className="flex gap-3 rounded-xl border border-gray-200 p-4"
+                      className="flex gap-3 rounded-xl border border-[#2f2c37] p-4"
                     >
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-100 text-sm font-semibold">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#292334] text-sm font-semibold">
                         {index + 1}
                       </span>
 
-                      <p className="text-sm leading-6 text-gray-700">
+                      <p className="text-sm leading-6 text-[#c9c1d4]">
                         {recommendation}
                       </p>
                     </div>
@@ -191,19 +191,19 @@ function AuditCard({
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
 
   return (
-    <div className="rounded-2xl border border-gray-200 p-5">
+    <div className="rounded-2xl border border-[#2f2c37] p-5">
       <div className="flex items-center justify-between gap-3">
-        <h3 className="font-semibold text-gray-900">
+        <h3 className="font-semibold text-[#f1f0f5]">
           {title}
         </h3>
 
-        <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
+        <span className="rounded-full bg-[#292334] px-3 py-1 text-xs font-medium text-[#c9c1d4]">
           {readableStatus}
         </span>
       </div>
 
       {issues?.length > 0 ? (
-        <ul className="mt-4 space-y-2 text-sm text-gray-600">
+        <ul className="mt-4 space-y-2 text-sm text-[#b8afc5]">
           {issues.map((issue: string, index: number) => (
             <li key={index} className="flex gap-2">
               <span>•</span>
@@ -212,7 +212,7 @@ function AuditCard({
           ))}
         </ul>
       ) : (
-        <p className="mt-4 text-sm text-gray-500">
+        <p className="mt-4 text-sm text-[#aaa0b8]">
           No major issues found.
         </p>
       )}
