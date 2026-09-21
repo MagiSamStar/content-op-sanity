@@ -1,0 +1,49 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+credentials*.json
+
+# Dependencies and generated builds
+node_modules/
+.venv/
+venv/
+.next/
+.sanity/
+dist/
+build/
+out/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+
+
+# Python caches and local content index
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+backend/chroma/
+
+# Local tools, Git-history backups, and test outputs
+.tmp/
+/tut-folder/
+/codie-fpi.png
+.local-backups/
+coverage/
+htmlcov/
+.coverage
+playwright-report/
+test-results/
+*.log
+
+# Operating system/editor metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
