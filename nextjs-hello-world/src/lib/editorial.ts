@@ -1,5 +1,5 @@
 import { headers } from "next/headers";
-import { hasEditorialLogin } from "./editorial-auth";
+import { editorialDemoEnabled, hasEditorialLogin } from "./editorial-auth";
 
 export type EditorialPost = {
   document_id: string;
@@ -37,7 +37,10 @@ function isEditorialPost(value: unknown): value is EditorialPost {
 
 export async function getEditorialPost(documentId: string) {
   const requestHeaders = await headers();
-  if (!hasEditorialLogin(requestHeaders.get("authorization"))) {
+  if (
+    !editorialDemoEnabled() &&
+    !hasEditorialLogin(requestHeaders.get("authorization"))
+  ) {
     throw new Error("Editorial login required.");
   }
 

@@ -1,5 +1,9 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 
+export function editorialDemoEnabled() {
+  return process.env.EDITORIAL_PUBLIC_DEMO === "true";
+}
+
 export function editorialLoginConfigured() {
   return Boolean(
     process.env.EDITORIAL_USERNAME && process.env.EDITORIAL_PASSWORD,

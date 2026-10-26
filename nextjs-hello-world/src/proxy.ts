@@ -1,10 +1,17 @@
 import { NextResponse, type NextRequest } from "next/server";
 import {
+  editorialDemoEnabled,
   editorialLoginConfigured,
   hasEditorialLogin,
 } from "@/lib/editorial-auth";
 
 export function proxy(request: NextRequest) {
+  if (editorialDemoEnabled()) {
+    const response = NextResponse.next();
+    response.headers.set("Cache-Control", "no-store");
+    return response;
+  }
+
   if (!editorialLoginConfigured()) {
     return new NextResponse("Editorial login is not configured.", {
       status: 503,
