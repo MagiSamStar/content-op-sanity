@@ -14,6 +14,9 @@ type AnalyzeResponse = {
 };
 
 type Props = {
+  documentId: string;
+  sourceId: string;
+  sourceRevision: string;
   title: string;
   excerpt?: string;
   body: string;

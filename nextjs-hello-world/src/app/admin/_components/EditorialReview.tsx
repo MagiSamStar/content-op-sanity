@@ -54,8 +54,8 @@ export default function EditorialReview({ suggestions, originals }: Props) {
           Review suggested edits
         </h3>
         <p className="mt-1 text-sm text-[#b8afc5]">
-          Compare with the published version, edit the proposed text, and
-          approve the changes you want to keep.
+          Compare with the loaded article version, edit the proposed text, and
+approve the changes you want to keep.
         </p>
       </div>
 
@@ -92,6 +92,7 @@ export default function EditorialReview({ suggestions, originals }: Props) {
                   aria-describedby={`${inputId}-help`}
                   className="mt-2 w-full rounded-lg border border-[#48404f] p-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c7b5ff]"
                 />
+                
                 <div id={`${inputId}-help`} className="mt-1 text-sm">
                   <p className={invalid ? "text-[#ffb2bf]" : "text-[#aaa0b8]"}>
                     {count}{limit !== undefined ? ` / ${limit}` : ""} characters
